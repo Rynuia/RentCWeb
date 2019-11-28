@@ -1,0 +1,97 @@
+﻿@model RentCWeb.Models.ReservationViewModel
+
+@{
+    ViewBag.Title = "NewRent";
+}
+
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<h2>New Car Rental</h2>
+
+
+<style>
+    .error {
+        color: red;
+    }
+</style>
+
+<form id="rentform">
+    <div class="form-group">
+        <div class="col-md-12">
+            @Html.TextBoxFor(model => model.Plate, new { @class = "form-control", @placeholder = "Plate" })
+
+            @Html.ValidationMessageFor(m => m.Plate, "", new { @class = "error" })
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+            @Html.TextBoxFor(m => m.CostumerID, new { @class = "form-control", @placeholder = "Client ID" })
+
+            @Html.ValidationMessageFor(model => model.CostumerID, "", new { @class = "error" })
+
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-12">
+            @Html.TextBoxFor(model => model.StartDate, new { @type = "date", @class = "form-control", @placeholder = "Start Date" })
+
+            @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "error" })
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+            @Html.TextBoxFor(model => model.EndDate, new { @type = "date", @class = "form-control", @placeholder = "End Date" })
+
+            @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "error" })
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+            @Html.TextBoxFor(model => model.Location, new { @class = "form-control", @placeholder = "City" })
+
+            @Html.ValidationMessageFor(model => model.Location, "", new { @class = "error" })
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+            <a href="#" class="btn btn-primary" onclick="DoReg()">Register</a>
+        </div>
+    </div>
+
+
+</form>
+
+<script>
+
+    var DoReg = function () {
+
+        debugger
+
+        var data = $("rentform").serialize();
+
+
+        $.ajax({
+            type: "POST",
+            url: "/RegRent/DoReg",
+            data: data,
+            
+        })
+
+    }
+
+
+</script>
+
+

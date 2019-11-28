@@ -20,7 +20,6 @@ namespace RentCWeb.Models
         public System.DateTime EndDate { get; set; }
         public string Location { get; set; }
         public byte ReservStatsID { get; set; }
-        public string Plate { get; set; }
     
         public virtual Car Car { get; set; }
         public virtual Customer Customer { get; set; }
