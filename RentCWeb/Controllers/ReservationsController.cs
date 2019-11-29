@@ -222,7 +222,6 @@ namespace RentCWeb.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "CarID,CustomerID,StartDate,EndDate,Location,ReservationID")] Reservation reservation)
         {
-            bool carpass;
             bool cidpass;
             bool datepass;
             bool citypass;
@@ -231,15 +230,6 @@ namespace RentCWeb.Controllers
             int carid = reservation.CarID;
             int cid = reservation.CustomerID;
             string city = reservation.Location;
-
-            var carcheck = db.Reservations.Where(r => r.CarID == carid).ToList();
-
-            if (carcheck.Count != 0)
-            {
-                carpass = false;
-                allpass = false;
-            }
-            else carpass = true;
 
             var cidcheck = db.Customers.Where(c => c.CustomerID == cid).ToList();
 
@@ -269,15 +259,10 @@ namespace RentCWeb.Controllers
             }
             else citypass = true;
 
-            string carstr = "";
             string cidstr = "";
             string datestr = "";
             string citystr = "";
-
-            if (carpass == false)
-            {
-                carstr = "This car is already rented.";
-            }
+            
 
             if (cidpass == false)
             {
@@ -305,7 +290,6 @@ namespace RentCWeb.Controllers
                 }
             }
 
-            ViewBag.CarPass = carstr;
             ViewBag.CidPass = cidstr;
             ViewBag.DatePass = datestr;
             ViewBag.CityPass = citystr;
