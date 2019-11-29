@@ -1,0 +1,71 @@
+﻿@model IEnumerable<RentCWeb.Models.Reservation>
+
+@{
+    ViewBag.Title = "Rental List";
+}
+
+<h2>Rental record list</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Find by Plate: @Html.TextBox("searchstring")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Plate", "List", new { sortorder = ViewBag.PlateSort })
+        </th>
+        <th>
+            @Html.ActionLink("Client ID", "List", new { sortorder = ViewBag.cIDSort })
+        </th>
+        <th>
+            @Html.ActionLink("Start Date", "List", new { sortorder = ViewBag.sdSort })
+        </th>
+        <th>
+            @Html.ActionLink("End Date", "List", new { sortorder = ViewBag.edSort })
+        </th>
+        <th>
+            @Html.ActionLink("City", "List", new { sortorder = ViewBag.citySort })
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Car.Plate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ReservationID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ReservationID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ReservationID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

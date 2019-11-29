@@ -11,7 +11,8 @@ namespace RentCWeb.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Car
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,10 +22,19 @@ namespace RentCWeb.Models
         }
     
         public int CarID { get; set; }
+
+        [StringLength(10)]
         public string Plate { get; set; }
+
+        [StringLength(30)]
         public string Manufacturer { get; set; }
+
+        [StringLength(50)]
         public string Model { get; set; }
+
         public decimal PricePerDay { get; set; }
+
+        [StringLength(50)]
         public string Location { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

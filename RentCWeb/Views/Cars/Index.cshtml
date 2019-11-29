@@ -1,0 +1,58 @@
+﻿@model IEnumerable<RentCWeb.Models.Car>
+
+@{
+    ViewBag.Title = "Cars";
+}
+
+<h2>Car List</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Car ID", "Index", new { sortorder = ViewBag.carIDSort })
+        </th>
+        <th>
+            @Html.ActionLink("Plate", "Index", new { sortorder = ViewBag.plateSort })
+        </th>
+        <th>
+            @Html.ActionLink("Manufacturer", "Index", new { sortorder = ViewBag.manuSort })
+        </th>
+        <th>
+            @Html.ActionLink("Model", "Index", new { sortorder = ViewBag.modelSort })
+        </th>
+        <th>
+            @Html.ActionLink("Price Per Day", "Index", new { sortorder = ViewBag.ppdSort })
+        </th>
+        <th>
+            @Html.ActionLink("City", "Index", new { sortorder = ViewBag.citySort })
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CarID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Plate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Manufacturer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PricePerDay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Location)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.CarID }) |
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,66 @@
+﻿@model IEnumerable<RentCWeb.Models.Customer>
+
+@{
+    ViewBag.Title = "Client List";
+}
+
+<h2>Client record list</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Find by Plate: @Html.TextBox("searchstring")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Client ID", "List", new { sortorder = ViewBag.cIDSort })
+        </th>
+        <th>
+            @Html.ActionLink("Name", "List", new { sortorder = ViewBag.nameSort })
+        </th>
+        <th>
+            @Html.ActionLink("Birthday", "List", new { sortorder = ViewBag.bdSort })
+        </th>
+        <th>
+            @Html.ActionLink("City", "List", new { sortorder = ViewBag.citySort })
+        </th>
+        <th>
+            @Html.ActionLink("Zip", "List", new { sortorder = ViewBag.zipSort })
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BirthDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Location)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Zip)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.CustomerID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.CustomerID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID })
+        </td>
+    </tr>
+}
+
+</table>

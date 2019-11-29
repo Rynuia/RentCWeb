@@ -8,7 +8,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{143E17F4-76AE-43F7-9494-D053BE58F1DE}</ProjectGuid>
+    <ProjectGuid>{B75C02BF-EE31-44D3-ABA4-1667CBB25C82}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -55,6 +55,9 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -63,6 +66,12 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -128,39 +137,39 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CarsController.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\RegRentController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\ReservationsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Car.cs">
-      <DependentUpon>RentCWebDataModel.tt</DependentUpon>
+      <DependentUpon>RentCWebModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CarViewModel.cs" />
     <Compile Include="Models\Customer.cs">
-      <DependentUpon>RentCWebDataModel.tt</DependentUpon>
+      <DependentUpon>RentCWebModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CustomerViewModel.cs" />
-    <Compile Include="Models\RentCWebDataModel.Context.cs">
+    <Compile Include="Models\RentCWebContext.cs" />
+    <Compile Include="Models\RentCWebModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RentCWebDataModel.Context.tt</DependentUpon>
+      <DependentUpon>RentCWebModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\RentCWebDataModel.cs">
+    <Compile Include="Models\RentCWebModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RentCWebDataModel.tt</DependentUpon>
+      <DependentUpon>RentCWebModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\RentCWebDataModel.Designer.cs">
+    <Compile Include="Models\RentCWebModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RentCWebDataModel.edmx</DependentUpon>
+      <DependentUpon>RentCWebModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Reservation.cs">
-      <DependentUpon>RentCWebDataModel.tt</DependentUpon>
+      <DependentUpon>RentCWebModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ReservationViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -179,24 +188,24 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\RentCWebDataModel.Context.tt">
+    <Content Include="Models\RentCWebModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RentCWebDataModel.edmx</DependentUpon>
-      <LastGenOutput>RentCWebDataModel.Context.cs</LastGenOutput>
+      <DependentUpon>RentCWebModel.edmx</DependentUpon>
+      <LastGenOutput>RentCWebModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\RentCWebDataModel.tt">
+    <Content Include="Models\RentCWebModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RentCWebDataModel.edmx</DependentUpon>
-      <LastGenOutput>RentCWebDataModel.cs</LastGenOutput>
+      <DependentUpon>RentCWebModel.edmx</DependentUpon>
+      <LastGenOutput>RentCWebModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\RentCWebDataModel.edmx">
+    <EntityDeploy Include="Models\RentCWebModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>RentCWebDataModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>RentCWebModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\RentCWebDataModel.edmx.diagram">
-      <DependentUpon>RentCWebDataModel.edmx</DependentUpon>
+    <Content Include="Models\RentCWebModel.edmx.diagram">
+      <DependentUpon>RentCWebModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -220,13 +229,25 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Test\Index.cshtml" />
-    <Content Include="Views\RegRent\NewRent.cshtml" />
+    <Content Include="Views\Reservations\Create.cshtml" />
+    <Content Include="Views\Reservations\Delete.cshtml" />
+    <Content Include="Views\Reservations\Details.cshtml" />
+    <Content Include="Views\Reservations\Edit.cshtml" />
+    <Content Include="Views\Reservations\Index.cshtml" />
+    <Content Include="Views\Customers\Create.cshtml" />
+    <Content Include="Views\Customers\Delete.cshtml" />
+    <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Customers\Edit.cshtml" />
+    <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\Cars\Details.cshtml" />
+    <Content Include="Views\Cars\Index.cshtml" />
+    <Content Include="Views\Reservations\List.cshtml" />
+    <Content Include="Views\Customers\List.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Reservation\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

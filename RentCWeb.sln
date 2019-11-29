@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.902
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentCWeb", "RentCWeb\RentCWeb.csproj", "{143E17F4-76AE-43F7-9494-D053BE58F1DE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentCWeb", "RentCWeb\RentCWeb.csproj", "{B75C02BF-EE31-44D3-ABA4-1667CBB25C82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{143E17F4-76AE-43F7-9494-D053BE58F1DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{143E17F4-76AE-43F7-9494-D053BE58F1DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{143E17F4-76AE-43F7-9494-D053BE58F1DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{143E17F4-76AE-43F7-9494-D053BE58F1DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B75C02BF-EE31-44D3-ABA4-1667CBB25C82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B75C02BF-EE31-44D3-ABA4-1667CBB25C82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B75C02BF-EE31-44D3-ABA4-1667CBB25C82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B75C02BF-EE31-44D3-ABA4-1667CBB25C82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

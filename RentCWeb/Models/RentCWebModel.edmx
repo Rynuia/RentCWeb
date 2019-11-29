@@ -18,9 +18,9 @@
         </EntityType>
         <EntityType Name="Customers">
           <Key>
-            <PropertyRef Name="CostumerID" />
+            <PropertyRef Name="CustomerID" />
           </Key>
-          <Property Name="CostumerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="BirthDate" Type="date" Nullable="false" />
           <Property Name="Location" Type="varchar" MaxLength="50" Nullable="false" />
@@ -28,15 +28,14 @@
         </EntityType>
         <EntityType Name="Reservations">
           <Key>
-            <PropertyRef Name="CarID" />
-            <PropertyRef Name="CostumerID" />
+            <PropertyRef Name="ReservationID" />
           </Key>
           <Property Name="CarID" Type="int" Nullable="false" />
-          <Property Name="CostumerID" Type="int" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
           <Property Name="StartDate" Type="date" Nullable="false" />
           <Property Name="EndDate" Type="date" Nullable="false" />
           <Property Name="Location" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ReservStatsID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReservationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <Association Name="Reservations_Cars">
           <End Role="Cars" Type="Self.Cars" Multiplicity="1" />
@@ -55,10 +54,10 @@
           <End Role="Reservations" Type="Self.Reservations" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customers">
-              <PropertyRef Name="CostumerID" />
+              <PropertyRef Name="CustomerID" />
             </Principal>
             <Dependent Role="Reservations">
-              <PropertyRef Name="CostumerID" />
+              <PropertyRef Name="CustomerID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -94,9 +93,9 @@
         </EntityType>
         <EntityType Name="Customer">
           <Key>
-            <PropertyRef Name="CostumerID" />
+            <PropertyRef Name="CustomerID" />
           </Key>
-          <Property Name="CostumerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -105,15 +104,14 @@
         </EntityType>
         <EntityType Name="Reservation">
           <Key>
-            <PropertyRef Name="CarID" />
-            <PropertyRef Name="CostumerID" />
+            <PropertyRef Name="ReservationID" />
           </Key>
           <Property Name="CarID" Type="Int32" Nullable="false" />
-          <Property Name="CostumerID" Type="Int32" Nullable="false" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
           <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ReservStatsID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReservationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Car" Relationship="Self.Reservations_Cars" FromRole="Reservations" ToRole="Cars" />
           <NavigationProperty Name="Customer" Relationship="Self.Reservations_Customers" FromRole="Reservations" ToRole="Customers" />
         </EntityType>
@@ -134,10 +132,10 @@
           <End Role="Reservations" Type="Self.Reservation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customers">
-              <PropertyRef Name="CostumerID" />
+              <PropertyRef Name="CustomerID" />
             </Principal>
             <Dependent Role="Reservations">
-              <PropertyRef Name="CostumerID" />
+              <PropertyRef Name="CustomerID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -175,7 +173,7 @@
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="rentcweb_dbModel.Customer">
               <MappingFragment StoreEntitySet="Customers">
-                <ScalarProperty Name="CostumerID" ColumnName="CostumerID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
                 <ScalarProperty Name="Location" ColumnName="Location" />
@@ -187,11 +185,11 @@
             <EntityTypeMapping TypeName="rentcweb_dbModel.Reservation">
               <MappingFragment StoreEntitySet="Reservations">
                 <ScalarProperty Name="CarID" ColumnName="CarID" />
-                <ScalarProperty Name="CostumerID" ColumnName="CostumerID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
                 <ScalarProperty Name="StartDate" ColumnName="StartDate" />
                 <ScalarProperty Name="EndDate" ColumnName="EndDate" />
                 <ScalarProperty Name="Location" ColumnName="Location" />
-                <ScalarProperty Name="ReservStatsID" ColumnName="ReservStatsID" />
+                <ScalarProperty Name="ReservationID" ColumnName="ReservationID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

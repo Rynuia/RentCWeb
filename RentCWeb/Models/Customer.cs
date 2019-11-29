@@ -11,7 +11,8 @@ namespace RentCWeb.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Customer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,11 +20,22 @@ namespace RentCWeb.Models
         {
             this.Reservations = new HashSet<Reservation>();
         }
-    
-        public int CostumerID { get; set; }
+        
+        [Key]
+        public int CustomerID { get; set; }
+
+        [Required(ErrorMessage = "Enter Client Name")]
         public string Name { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MMMM-yyyy}", ApplyFormatInEditMode = true)]
+        [Required(ErrorMessage = "Enter Client Birth Date")]
         public System.DateTime BirthDate { get; set; }
+
+        [StringLength(50)]
+        [Required(ErrorMessage = "Enter Client City")]
         public string Location { get; set; }
+
         public Nullable<int> Zip { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
